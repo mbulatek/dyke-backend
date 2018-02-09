@@ -1,9 +1,15 @@
 package com.dyke.poc.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import java.util.List;
 
@@ -15,9 +21,10 @@ public class Project {
   private int project_id;
   private String name;
   private String description;
-//  private List<User> users;
-//  private List<Team> teams;
-//  private List<Ticket> tickets;
+  @OneToMany(mappedBy = "ticket_id", cascade = CascadeType.ALL)
+  private List<Ticket> tickets;
+  @OneToMany(mappedBy = "team_id", cascade = CascadeType.ALL)
+  private List<Team> teams;
 
 
   public Project() {
@@ -47,29 +54,21 @@ public class Project {
     this.description = description;
   }
 
-//  public List<User> getUsers() {
-//    return users;
-//  }
-//
-//  public void setUsers(List<User> users) {
-//    this.users = users;
-//  }
-//
-//  public List<Team> getTeams() {
-//    return teams;
-//  }
-//
-//  public void setTeams(List<Team> teams) {
-//    this.teams = teams;
-//  }
-//
-//  public List<Ticket> getTickets() {
-//    return tickets;
-//  }
-//
-//  public void setTickets(List<Ticket> tickets) {
-//    this.tickets = tickets;
-//  }
+  public List<Ticket> getTickets() {
+    return tickets;
+  }
+
+  public void setTickets(List<Ticket> tickets) {
+    this.tickets = tickets;
+  }
+
+  public List<Team> getTeams() {
+    return teams;
+  }
+
+  public void setTeams(List<Team> teams) {
+    this.teams = teams;
+  }
 }
 
 
