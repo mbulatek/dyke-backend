@@ -1,19 +1,27 @@
 package com.dyke.poc.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
-@Entity
+@Entity(name = "tickets")
 public class Ticket {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int ticket_id;
-  private int project_id;
+  private int ID;
+  private int projectID;
   private String description;
-  private int priority;
+  @OneToOne(fetch=FetchType.LAZY)
+  @JoinColumn(name="priorityID")
+  private TicketPriority priority;
   private int team;
   private int type;
   private int resolution;
@@ -24,20 +32,20 @@ public class Ticket {
   public Ticket() {
   }
 
-  public int getTicket_id() {
-    return ticket_id;
+  public int getID() {
+    return ID;
   }
 
-  public void setTicket_id(int ticket_id) {
-    this.ticket_id = ticket_id;
+  public void setID(int ID) {
+    this.ID = ID;
   }
 
-  public int getProject_id() {
-    return project_id;
+  public int getProjectID() {
+    return projectID;
   }
 
-  public void setProject_id(int project_id) {
-    this.project_id = project_id;
+  public void setProjectID(int projectID) {
+    this.projectID = projectID;
   }
 
   public String getDescription() {
@@ -48,11 +56,11 @@ public class Ticket {
     this.description = description;
   }
 
-  public int getPriority() {
+  public TicketPriority getPriority() {
     return priority;
   }
 
-  public void setPriority(int priority) {
+  public void setPriority(TicketPriority priority) {
     this.priority = priority;
   }
 
