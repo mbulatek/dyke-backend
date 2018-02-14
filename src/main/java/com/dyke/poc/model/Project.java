@@ -31,7 +31,7 @@ public class Project {
   private int ID;
   private String name;
   private String description;
-  @OneToMany(mappedBy = "ID", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "projectID", cascade = CascadeType.ALL)
   private List<Ticket> tickets;
   @OneToMany(mappedBy = "team_id", cascade = CascadeType.ALL)
   private List<Team> teams;

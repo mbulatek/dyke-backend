@@ -18,6 +18,7 @@ public class Ticket {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int ID;
   private int projectID;
+  
   private String description;
   @OneToOne(fetch=FetchType.LAZY)
   @JoinColumn(name="priorityID")

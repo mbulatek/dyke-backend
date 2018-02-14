@@ -3,10 +3,6 @@ package com.dyke.poc.rest;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,10 +36,26 @@ public class ProjectController {
         return project;
     }
 
+	@RequestMapping("/addTicketPriority")
+    public TicketPriority addTicketPriority(@RequestParam(value="name") String name,
+    				@RequestParam(value="order") int order) {
+
+		LOGGER.log(Level.INFO, "ProjectController/addTicketPriority");
+    	
+    	TicketPriority	ticketPriority = new TicketPriority();
+		ticketPriority.setName(name);
+		ticketPriority.setPriorityOrder(order);
+
+    	repo.saveTicketPriority(ticketPriority);
+    	
+        return ticketPriority;
+    }
+
+	
 	@RequestMapping("/addTicket")
     public Ticket addTicket(@RequestParam(value="projectID") int projectID,
     				@RequestParam(value="desc") String description,
-    				@RequestParam(value="priority") String priority) {
+    				@RequestParam(value="priority") int priority) {
 
 		LOGGER.log(Level.INFO, "ProjectController/addTicket");
 				
@@ -51,13 +63,18 @@ public class ProjectController {
 		Ticket			ticket = new Ticket();
 		ticket.setProjectID(projectID);
     	ticket.setDescription(description);
-    	TicketPriority	ticketPriority = new TicketPriority();
-		ticketPriority.setName(priority);
-		ticket.setPriority(ticketPriority);
+    	ticket.setPriority(repo.getTicketPriority(priority));
 
-    	repo.saveTicketPriority(ticketPriority);
     	repo.saveTicket(ticket);
     	
         return ticket;
     }
+	
+	@RequestMapping("/getTicket")
+    public Ticket getTicket(@RequestParam(value="ID") int ID) {
+
+		LOGGER.log(Level.INFO, "ProjectController/getTicket");
+		
+		return repo.getTicket(ID);
+	}
 }

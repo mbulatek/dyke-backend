@@ -33,4 +33,14 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   public Project getProject(int id) {
     return entityManager.find(Project.class, id);
   }
+  
+  @Override
+  public Ticket getTicket(int id) {
+	  return entityManager.find(Ticket.class, id);
+  }
+
+  @Override
+  public TicketPriority getTicketPriority(int id) {
+	  return entityManager.find(TicketPriority.class, id);
+  }
 }
