@@ -13,54 +13,53 @@ import com.dyke.poc.model.TicketPriority;
 @RestController
 public class TicketController extends Controller {
 
-	@RequestMapping("/addTicket")
-    public Ticket addTicket(@RequestParam(value="projectID") int projectID,
-    				@RequestParam(value="desc") String description,
-    				@RequestParam(value="priority") int priority) {
+  @RequestMapping("/addTicket")
+  public Ticket addTicket(@RequestParam(value = "projectID") int projectID,
+      @RequestParam(value = "desc") String description,
+      @RequestParam(value = "priority") int priority) {
 
-		LOGGER.log(Level.INFO, "ProjectController/addTicket");
-				
-    	
-		Ticket			ticket = new Ticket();
-		ticket.setProjectID(projectID);
-    	ticket.setDescription(description);
-    	ticket.setPriority(repo.getTicketPriority(priority));
+    LOGGER.log(Level.INFO, "ProjectController/addTicket");
 
-    	repo.saveTicket(ticket);
-    	
-        return ticket;
-    }
-	
-	@RequestMapping("/getTicket")
-    public Ticket getTicket(@RequestParam(value="ID") int ID) {
+    Ticket ticket = new Ticket();
+    ticket.setProjectID(projectID);
+    ticket.setDescription(description);
+    ticket.setPriority(repo.getTicketPriority(priority));
 
-		LOGGER.log(Level.INFO, "ProjectController/getTicket");
-		
-		return repo.getTicket(ID);
-	}
+    repo.saveTicket(ticket);
 
-	@RequestMapping("/listTicketsByProject")
-    public List<Ticket> listTicketsByProject(@RequestParam(value="projectID") int projectID) {
+    return ticket;
+  }
 
-		LOGGER.log(Level.INFO, "ProjectController/listTicketsByProject");
-		
-		return repo.listTicketsByProject(projectID);
-	}
-	
-	@RequestMapping("/addTicketPriority")
-    public TicketPriority addTicketPriority(@RequestParam(value="name") String name,
-    				@RequestParam(value="order") int order) {
+  @RequestMapping("/getTicket")
+  public Ticket getTicket(@RequestParam(value = "ID") int ID) {
 
-		LOGGER.log(Level.INFO, "ProjectController/addTicketPriority");
-    	
-    	TicketPriority	ticketPriority = new TicketPriority();
-		ticketPriority.setName(name);
-		ticketPriority.setPriorityOrder(order);
+    LOGGER.log(Level.INFO, "ProjectController/getTicket");
 
-    	repo.saveTicketPriority(ticketPriority);
-    	
-        return ticketPriority;
-    }
+    return repo.getTicket(ID);
+  }
 
-	
+  @RequestMapping("/listTicketsByProject")
+  public List<Ticket> listTicketsByProject(@RequestParam(value = "projectID") int projectID) {
+
+    LOGGER.log(Level.INFO, "ProjectController/listTicketsByProject");
+
+    return repo.listTicketsByProject(projectID);
+  }
+
+  @RequestMapping("/addTicketPriority")
+  public TicketPriority addTicketPriority(@RequestParam(value = "name") String name,
+      @RequestParam(value = "order") int order) {
+
+    LOGGER.log(Level.INFO, "ProjectController/addTicketPriority");
+
+    TicketPriority ticketPriority = new TicketPriority();
+    ticketPriority.setName(name);
+    ticketPriority.setPriorityOrder(order);
+
+    repo.saveTicketPriority(ticketPriority);
+
+    return ticketPriority;
+  }
+
+
 }

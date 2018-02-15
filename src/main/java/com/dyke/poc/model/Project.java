@@ -36,14 +36,13 @@ public class Project {
   @OneToMany(mappedBy = "team_id", cascade = CascadeType.ALL)
   private List<Team> teams;
 
-  @ManyToMany(cascade = { CascadeType.ALL })
+  @ManyToMany(cascade = {CascadeType.ALL})
   @JoinTable(
-      name = "users_to_projects", 
-      joinColumns = { @JoinColumn(name = "projectID") }, 
-      inverseJoinColumns = { @JoinColumn(name = "userID") })
+      name = "users_to_projects",
+      joinColumns = {@JoinColumn(name = "projectID")},
+      inverseJoinColumns = {@JoinColumn(name = "userID")})
   private List<Team> users;
 
-  
 
   public Project() {
   }
@@ -79,11 +78,11 @@ public class Project {
   public void setTickets(List<Ticket> tickets) {
     this.tickets = tickets;
   }
-  
+
   public void addTicket(Ticket ticket) {
-	  tickets.add(ticket);
+    tickets.add(ticket);
   }
-  
+
   public List<Team> getTeams() {
     return teams;
   }

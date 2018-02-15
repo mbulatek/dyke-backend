@@ -18,10 +18,10 @@ public class Ticket {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int ID;
   private int projectID;
-  
+
   private String description;
-  @OneToOne(fetch=FetchType.EAGER)
-  @JoinColumn(name="priorityID")
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "priorityID")
   private TicketPriority priority;
   private int team;
   private int type;

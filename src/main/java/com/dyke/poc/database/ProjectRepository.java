@@ -11,9 +11,10 @@ public interface ProjectRepository {
   void saveProject(Project project);
 
   Project getProject(int id);
-  
+
   Ticket getTicket(int id);
+
   List<Ticket> listTicketsByProject(int projectID);
-  
+
   TicketPriority getTicketPriority(int id);
 }
