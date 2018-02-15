@@ -20,7 +20,7 @@ public class Ticket {
   private int projectID;
   
   private String description;
-  @OneToOne(fetch=FetchType.LAZY)
+  @OneToOne(fetch=FetchType.EAGER)
   @JoinColumn(name="priorityID")
   private TicketPriority priority;
   private int team;
