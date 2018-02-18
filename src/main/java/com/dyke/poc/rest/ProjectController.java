@@ -1,5 +1,6 @@
 package com.dyke.poc.rest;
 
+import java.util.List;
 import java.util.logging.Level;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,4 +26,22 @@ public class ProjectController extends Controller {
     repo.saveProject(project);
     return project;
   }
+
+  @RequestMapping("/getProjects")
+  public List<Project> getProjects() {
+
+    LOGGER.log(Level.INFO, "ProjectController/getTicket");
+
+    return repo.listProject();
+  }
+
+  @RequestMapping("/getPriorities")
+  public List<TicketPriority> getPriorities() {
+
+    LOGGER.log(Level.INFO, "ProjectController/getTicket");
+
+    return repo.listProrities();
+  }
+
+
 }

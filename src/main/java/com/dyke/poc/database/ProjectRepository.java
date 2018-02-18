@@ -14,7 +14,7 @@ public interface ProjectRepository {
 
   Ticket getTicket(int id);
 
-  List<Ticket> listTicketsByProject(int projectID);
+  List listTicketsByProject(int projectID);
 
   TicketPriority getTicketPriority(int id);
 }

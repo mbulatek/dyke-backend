@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -38,17 +39,29 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     return entityManager.find(Project.class, id);
   }
 
+
   @Override
   public Ticket getTicket(int id) {
     return entityManager.find(Ticket.class, id);
   }
 
+
   @Override
   public List<Ticket> listTicketsByProject(int projectID) {
-    return entityManager
-        .createNamedQuery("",
-            Ticket.class)
-        .setParameter("projectID", projectID).getResultList();
+    return entityManager.createQuery("from Ticket t where t.projectId = :projectId", Ticket.class)
+        .setParameter("projectId", projectID)
+        .getResultList();
+  }
+
+
+  public List<Project> listProject() {
+    return entityManager.createQuery("from Project", Project.class)
+        .getResultList();
+  }
+
+  public List<TicketPriority> listProrities() {
+    return entityManager.createQuery("from TicketPriority", TicketPriority.class)
+        .getResultList();
   }
 
   @Override
