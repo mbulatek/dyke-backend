@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -40,12 +41,15 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     entityManager.persist(ticket);
   }
 
+
   @Override
   public Ticket getTicket(int id) {
     return entityManager.find(Ticket.class, id);
   }
 
+
   @Override
+
   public List<Ticket> listTicketsByProject(int projectId) {
     return entityManager.createQuery("from Ticket t where t.projectId = :projectId", Ticket.class)
         .setParameter("projectId", projectId)
@@ -55,6 +59,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   @Override
   public void saveTicketPriority(TicketPriority priority) {
     entityManager.persist(priority);
+
   }
 
   @Override
