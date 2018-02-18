@@ -21,7 +21,7 @@ public class TicketController extends Controller {
     LOGGER.log(Level.INFO, "ProjectController/addTicket");
 
     Ticket ticket = new Ticket();
-    ticket.setProjectID(projectID);
+    ticket.setProjectId(projectID);
     ticket.setDescription(description);
     ticket.setPriority(repo.getTicketPriority(priority));
 
@@ -60,6 +60,4 @@ public class TicketController extends Controller {
 
     return ticketPriority;
   }
-
-
 }

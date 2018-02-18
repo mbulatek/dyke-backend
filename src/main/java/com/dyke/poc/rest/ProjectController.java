@@ -21,11 +21,8 @@ public class ProjectController extends Controller {
 
     Project project = new Project();
     project.setName(name);
-    ;
     project.setDescription(description);
-
     repo.saveProject(project);
-
     return project;
   }
 }

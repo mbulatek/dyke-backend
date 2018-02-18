@@ -12,16 +12,16 @@ public class TicketPriority {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int ID;
+  private int id;
   private String name;
   private int priorityOrder;
 
-  public void setID(int ID) {
-    this.ID = ID;
+  public void setId(int id) {
+    this.id = id;
   }
 
-  public int getID() {
-    return ID;
+  public int getId() {
+    return id;
   }
 
   public void setName(String name) {
