@@ -1,14 +1,11 @@
 package com.dyke.poc.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity(name = "tickets")
@@ -16,12 +13,11 @@ public class Ticket {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int ID;
-  private int projectID;
-  
+  private int id;
+  private int projectId;
   private String description;
-  @OneToOne(fetch=FetchType.EAGER)
-  @JoinColumn(name="priorityID")
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "priorityId")
   private TicketPriority priority;
   private int team;
   private int type;
@@ -33,20 +29,20 @@ public class Ticket {
   public Ticket() {
   }
 
-  public int getID() {
-    return ID;
+  public int getId() {
+    return id;
   }
 
-  public void setID(int ID) {
-    this.ID = ID;
+  public void setId(int id) {
+    this.id = id;
   }
 
-  public int getProjectID() {
-    return projectID;
+  public int getProjectId() {
+    return projectId;
   }
 
-  public void setProjectID(int projectID) {
-    this.projectID = projectID;
+  public void setProjectId(int projectId) {
+    this.projectId = projectId;
   }
 
   public String getDescription() {

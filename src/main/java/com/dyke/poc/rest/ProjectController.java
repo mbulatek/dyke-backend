@@ -13,18 +13,16 @@ import com.dyke.poc.model.TicketPriority;
 @RestController
 public class ProjectController extends Controller {
 
-	@RequestMapping("/addProject")
-    public Project addProject(@RequestParam(value="name") String name,
-    				@RequestParam(value="desc") String description) {
+  @RequestMapping("/addProject")
+  public Project addProject(@RequestParam(value = "name") String name,
+      @RequestParam(value = "desc") String description) {
 
-		LOGGER.log(Level.INFO, "ProjectController/addProject");
-				
-    	Project			project = new Project();
-    	project.setName(name);;
-    	project.setDescription(description);
-    	
-    	repo.saveProject(project);
-    	
-        return project;
-    }
+    LOGGER.log(Level.INFO, "ProjectController/addProject");
+
+    Project project = new Project();
+    project.setName(name);
+    project.setDescription(description);
+    repo.saveProject(project);
+    return project;
+  }
 }

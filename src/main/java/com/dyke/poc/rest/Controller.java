@@ -10,8 +10,8 @@ import com.dyke.poc.database.ProjectRepositoryImpl;
 @RestController
 public class Controller {
 
-	@Autowired
-	protected ProjectRepositoryImpl repo;
-	
-	protected static final Logger LOGGER = Logger.getLogger( ProjectController.class.getName() );
+  @Autowired
+  protected ProjectRepositoryImpl repo;
+
+  protected static final Logger LOGGER = Logger.getLogger(ProjectController.class.getName());
 }
