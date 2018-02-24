@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+<<<<<<< HEAD
 @Table (name = "tickets_resolutions")
 public class TicketResolution {
 
@@ -30,4 +31,13 @@ public class TicketResolution {
   public String getName() {
     return name;
   }
+=======
+@Table(name = "ticket_resolution")
+public class TicketResolution {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private int id;
+  private String name;
+>>>>>>> 0iwork with mysql model
 }
