@@ -1,10 +1,10 @@
 package com.dyke.poc.database;
 
-import java.util.List;
-
 import com.dyke.poc.model.Project;
 import com.dyke.poc.model.Ticket;
 import com.dyke.poc.model.TicketPriority;
+
+import java.util.List;
 
 public interface ProjectRepository {
 
@@ -12,9 +12,18 @@ public interface ProjectRepository {
 
   Project getProject(int id);
 
+  List<Project> listProject();
+
+  void saveTicket(Ticket ticket);
+
   Ticket getTicket(int id);
 
-  List<Ticket> listTicketsByProject(int projectID);
+  List listTicketsByProject(int projectId);
+
+  void saveTicketPriority(TicketPriority priority);
 
   TicketPriority getTicketPriority(int id);
+
+  List<TicketPriority> listProrities();
 }
+

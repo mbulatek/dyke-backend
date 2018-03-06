@@ -12,7 +12,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-
 @Repository
 @Transactional
 public class ProjectRepositoryImpl implements ProjectRepository {
@@ -25,17 +24,20 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     entityManager.persist(project);
   }
 
-  public void saveTicketPriority(TicketPriority priority) {
-    entityManager.persist(priority);
-  }
-
-  public void saveTicket(Ticket ticket) {
-    entityManager.persist(ticket);
-  }
-
   @Override
   public Project getProject(int id) {
     return entityManager.find(Project.class, id);
+  }
+
+  @Override
+  public List<Project> listProject() {
+    return entityManager.createQuery("from Project", Project.class)
+        .getResultList();
+  }
+
+  @Override
+  public void saveTicket(Ticket ticket) {
+    entityManager.persist(ticket);
   }
 
   @Override
@@ -44,15 +46,25 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   }
 
   @Override
-  public List<Ticket> listTicketsByProject(int projectID) {
-    return entityManager
-        .createNamedQuery("",
-            Ticket.class)
-        .setParameter("projectID", projectID).getResultList();
+  public List<Ticket> listTicketsByProject(int projectId) {
+    return entityManager.createQuery("from Ticket t where t.projectId = :projectId", Ticket.class)
+        .setParameter("projectId", projectId)
+        .getResultList();
+  }
+
+  @Override
+  public void saveTicketPriority(TicketPriority priority) {
+    entityManager.persist(priority);
   }
 
   @Override
   public TicketPriority getTicketPriority(int id) {
     return entityManager.find(TicketPriority.class, id);
+  }
+
+  @Override
+  public List<TicketPriority> listProrities() {
+    return entityManager.createQuery("from TicketPriority", TicketPriority.class)
+        .getResultList();
   }
 }
