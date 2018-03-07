@@ -18,7 +18,7 @@ public interface ProjectRepository {
 
   Ticket getTicket(int id);
 
-  List listTicketsByProject(int projectId);
+  List listTickets(Ticket ticket);
 
   void saveTicketPriority(TicketPriority priority);
 

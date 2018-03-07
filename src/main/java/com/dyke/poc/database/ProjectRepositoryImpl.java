@@ -46,9 +46,9 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   }
 
   @Override
-  public List<Ticket> listTicketsByProject(int projectId) {
+  public List<Ticket> listTickets(Ticket ticket) {
     return entityManager.createQuery("from Ticket t where t.projectId = :projectId", Ticket.class)
-        .setParameter("projectId", projectId)
+        .setParameter("projectId", ticket.getProjectId())
         .getResultList();
   }
 

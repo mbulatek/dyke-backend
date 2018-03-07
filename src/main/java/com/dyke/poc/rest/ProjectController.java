@@ -3,6 +3,7 @@ package com.dyke.poc.rest;
 import java.util.List;
 import java.util.logging.Level;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,31 +16,19 @@ import com.dyke.poc.model.TicketPriority;
 @RestController
 public class ProjectController extends Controller {
 
-  @RequestMapping(value = "/addProject", method = RequestMethod.POST)
-  public Project addProject(@RequestParam(value = "name") String name,
-      @RequestParam(value = "desc") String description) {
+  @RequestMapping(value = "/project", method = RequestMethod.POST)
+  public Project addProject(@RequestBody Project project) {
 
-    LOGGER.log(Level.INFO, "ProjectController/addProject");
+    LOGGER.log(Level.INFO, "ProjectController/project(POST)");
 
-    Project project = new Project();
-    project.setName(name);
-    project.setDescription(description);
     repo.saveProject(project);
     return project;
   }
 
-  @RequestMapping(value = "/getProject", method = RequestMethod.GET)
-  public Project getProject(@RequestParam(value = "id") int id) {
-
-    LOGGER.log(Level.INFO, "ProjectController/getProject");
-
-    return repo.getProject(id);
-  }
-
-  @RequestMapping(value = "/getProjects", method = RequestMethod.GET)
+  @RequestMapping(value = "/project", method = RequestMethod.GET)
   public List<Project> getProjects() {
 
-    LOGGER.log(Level.INFO, "ProjectController/getProjects");
+    LOGGER.log(Level.INFO, "ProjectController/project(GET)");
 
     return repo.listProject();
   }
