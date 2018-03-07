@@ -18,15 +18,43 @@ public class Ticket {
   private int id;
   private int projectId;
   private String description;
+
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "typeId")
+  private TicketType type;
+
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "statusId")
+  private TicketStatus status;
+
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "resolutionId")
+  private TicketResolution resolution;
+  
   @OneToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "priorityId")
   private TicketPriority priority;
-  private int team;
-  private int type;
-  private int resolution;
-  private int reporter;
-  private int component;
-  private int assignee;
+
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "reporterId")
+  private User reporter;
+
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "assigneeId")
+  private User assignee;
+  
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "componentId")
+  private Component component;
+
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "milestoneId")
+  private Milestone milestone;
+
+  @OneToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "teamId")
+  private Team team;
+  
 
   public Ticket() {
   }
@@ -63,51 +91,51 @@ public class Ticket {
     this.priority = priority;
   }
 
-  public int getTeam() {
+  public Team getTeam() {
     return team;
   }
 
-  public void setTeam(int team) {
+  public void setTeam(Team team) {
     this.team = team;
   }
 
-  public int getType() {
+  public TicketType getType() {
     return type;
   }
 
-  public void setType(int type) {
+  public void setType(TicketType type) {
     this.type = type;
   }
 
-  public int getResolution() {
+  public TicketResolution getResolution() {
     return resolution;
   }
 
-  public void setResolution(int resolution) {
+  public void setResolution(TicketResolution resolution) {
     this.resolution = resolution;
   }
 
-  public int getReporter() {
+  public User getReporter() {
     return reporter;
   }
 
-  public void setReporter(int reporter) {
+  public void setReporter(User reporter) {
     this.reporter = reporter;
   }
 
-  public int getComponent() {
+  public Component getComponent() {
     return component;
   }
 
-  public void setComponent(int component) {
+  public void setComponent(Component component) {
     this.component = component;
   }
 
-  public int getAssignee() {
+  public User getAssignee() {
     return assignee;
   }
 
-  public void setAssignee(int assignee) {
+  public void setAssignee(User assignee) {
     this.assignee = assignee;
   }
 }

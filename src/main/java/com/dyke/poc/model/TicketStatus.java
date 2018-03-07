@@ -7,36 +7,27 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "tickets_priorities")
-public class TicketPriority {
-
+@Table (name = "tickets_statuses")
+public class TicketStatus {
+  
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
-  private String name;
-  private Integer priorityOrder;
-
+  Integer id;
+  String name;
+  
   public void setId(Integer id) {
     this.id = id;
   }
-
+  
   public Integer getId() {
     return id;
   }
-
+  
   public void setName(String name) {
     this.name = name;
   }
-
+  
   public String getName() {
     return name;
-  }
-
-  public void setPriorityOrder(Integer order) {
-    this.priorityOrder = order;
-  }
-
-  public Integer getPriorityOrder() {
-    return priorityOrder;
   }
 }

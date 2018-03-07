@@ -6,6 +6,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import java.util.List;
@@ -15,20 +18,25 @@ public class Team {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int teamId;
+  private int id;
   private String name;
-  @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+  @ManyToMany(cascade = {CascadeType.ALL})
+  @JoinTable(
+      name = "users_to_teams",
+      joinColumns = {@JoinColumn(name = "teamId")},
+      inverseJoinColumns = {@JoinColumn(name = "userId")})
   private List<User> users;
 
   public Team() {
   }
 
-  public int getTeamId() {
-    return teamId;
+  public int getId() {
+    return id;
   }
 
-  public void setTeamId(int teamId) {
-    this.teamId = teamId;
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getName() {

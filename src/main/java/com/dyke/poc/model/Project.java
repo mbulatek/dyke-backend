@@ -11,13 +11,41 @@ public class Project {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private Integer id;
   private String name;
   private String description;
+  
   @OneToMany(mappedBy = "projectId", cascade = CascadeType.ALL)
   private List<Ticket> tickets;
-  @OneToMany(mappedBy = "teamId", cascade = CascadeType.ALL)
+  
+  @OneToMany(cascade = CascadeType.ALL)
+  @JoinTable(
+      name = "tickets_types_to_projects",
+      joinColumns = {@JoinColumn(name = "projectId")},
+      inverseJoinColumns = {@JoinColumn(name = "ticketTypeId")})
+  private List<TicketType> ticketsTypes;
+
+  @OneToMany(cascade = CascadeType.ALL)
+  @JoinTable(
+      name = "components_to_projects",
+      joinColumns = {@JoinColumn(name = "projectId")},
+      inverseJoinColumns = {@JoinColumn(name = "componentId")})
+  private List<Component> components;
+
+  @OneToMany(cascade = CascadeType.ALL)
+  @JoinTable(
+      name = "milestones_to_projects",
+      joinColumns = {@JoinColumn(name = "projectId")},
+      inverseJoinColumns = {@JoinColumn(name = "milestoneId")})
+  private List<Milestone> milestones;
+
+  @ManyToMany(cascade = {CascadeType.ALL})
+  @JoinTable(
+      name = "teams_to_projects",
+      joinColumns = {@JoinColumn(name = "projectId")},
+      inverseJoinColumns = {@JoinColumn(name = "teamId")})
   private List<Team> teams;
+
   @ManyToMany(cascade = {CascadeType.ALL})
   @JoinTable(
       name = "users_to_projects",
@@ -25,14 +53,15 @@ public class Project {
       inverseJoinColumns = {@JoinColumn(name = "userId")})
   private List<Team> users;
 
+
   public Project() {
   }
 
-  public int getProject_id() {
+  public Integer getId() {
     return id;
   }
 
-  public void setProject_id(int ID) {
+  public void setId(Integer ID) {
     this.id = ID;
   }
 
