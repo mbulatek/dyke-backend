@@ -51,7 +51,7 @@ public class Project {
       name = "users_to_projects",
       joinColumns = {@JoinColumn(name = "projectId")},
       inverseJoinColumns = {@JoinColumn(name = "userId")})
-  private List<Team> users;
+  private List<User> users;
 
 
   public Project() {
@@ -88,9 +88,33 @@ public class Project {
   public void setTickets(List<Ticket> tickets) {
     this.tickets = tickets;
   }
-
+  
   public void addTicket(Ticket ticket) {
     tickets.add(ticket);
+  }
+  
+  public List<TicketType> getTicketsTypes() {
+    return ticketsTypes;
+  }
+  
+  public void addTicketType(TicketType type) {
+    ticketsTypes.add(type);
+  }
+  
+  public List<Component> getComponents() {
+    return components;
+  }
+  
+  public void addComponent(Component component) {
+    components.add(component);
+  }
+  
+  public List<Milestone> getMilestones() {
+    return milestones;
+  }
+  
+  public void addMilestone(Milestone milestone) {
+    milestones.add(milestone);
   }
 
   public List<Team> getTeams() {
@@ -99,6 +123,18 @@ public class Project {
 
   public void setTeams(List<Team> teams) {
     this.teams = teams;
+  }
+  
+  public void addTeam(Team team) {
+    teams.add(team);
+  }
+  
+  public List<User> getUsers() {
+    return users;
+  }
+  
+  public void addUser(User user) {
+    users.add(user);
   }
 }
 

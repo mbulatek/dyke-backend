@@ -71,4 +71,28 @@ public class TicketType {
   public void setContainer(Boolean isContainer) {
     this.isContainer = isContainer;
   }
+  
+  public List<TicketStatus> getStatuses() {
+    return statuses;
+  }
+  
+  public void addStatus(TicketStatus status) {
+    statuses.add(status);
+  }
+  
+  public List<TicketPriority> getPriorities() {
+    return priorities;
+  }
+  
+  public void addPriority(TicketPriority priority) {
+    priorities.add(priority);
+  }
+  
+  public List<TicketResolution> getResolutions() {
+    return resolutions;
+  }
+  
+  public void addResolution(TicketResolution resolution) {
+    resolutions.add(resolution);
+  }
 }
