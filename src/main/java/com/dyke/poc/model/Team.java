@@ -2,15 +2,12 @@ package com.dyke.poc.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-
 import java.util.List;
 
 @Entity(name = "teams")
@@ -53,5 +50,9 @@ public class Team {
 
   public void setUsers(List<User> users) {
     this.users = users;
+  }
+  
+  public void addUser(User user) {
+    users.add(user);
   }
 }
