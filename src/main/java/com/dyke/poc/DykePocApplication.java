@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DykePocApplication {
 
   public static void main(String[] args) {
+    // maly test
     SpringApplication.run(DykePocApplication.class, args);
   }
 }
