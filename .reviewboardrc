@@ -1,0 +1,4 @@
+REVIEWBOARD_URL = "mbulatek.nazwa.pl/reviewboard"
+REPOSITORY = "dyke-backend"
+BRANCH = "POC"
+LAND_DEST_BRANCH = "POC"
