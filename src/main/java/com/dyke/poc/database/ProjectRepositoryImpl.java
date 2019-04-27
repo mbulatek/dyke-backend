@@ -55,6 +55,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
   @Override
   public void saveTicketPriority(TicketPriority priority) {
     entityManager.persist(priority);
+
   }
 
   @Override
@@ -67,4 +68,5 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     return entityManager.createQuery("from TicketPriority", TicketPriority.class)
         .getResultList();
   }
+
 }

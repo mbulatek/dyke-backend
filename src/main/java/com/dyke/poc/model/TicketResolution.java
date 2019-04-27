@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+
 @Table (name = "tickets_resolutions")
 public class TicketResolution {
 
@@ -30,4 +31,5 @@ public class TicketResolution {
   public String getName() {
     return name;
   }
+
 }
